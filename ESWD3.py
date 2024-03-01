@@ -157,7 +157,7 @@ class ESWD3(object):
 			MCDDPG_target_Q = target_Q_list.mean(axis=0, dtype=torch.float32)
 			MCDDPG_target_Q = reward + not_done * self.discount * MCDDPG_target_Q
 
-			TADD_target_Q = 0.95 * torch.min(target_Q_list[0],target_Q_list[1]) + 0.05 *(target_Q_list[2]+target_Q_list[3]+target_Q_list[4])/3
+			TADD_target_Q = 0.95 * torch.min(target_Q_list[0],target_Q_list[1]) + 0.05 *(target_Q_list[2]+target_Q_list[3])/2
 			TADD_target_Q = reward + not_done * self.discount * TADD_target_Q
 
 			target_Q_list, indices = torch.sort(target_Q_list,dim=0)
