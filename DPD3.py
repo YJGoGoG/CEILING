@@ -155,7 +155,7 @@ class DPD3(object):
 			elif algorithm == 'MCDDPG':
 				target_Q = target_Q_list.mean(axis=0, dtype=torch.float32)
 			elif algorithm == 'TADD':
-				target_Q = 0.95 * torch.min(target_Q_list[0],target_Q_list[1]) + 0.05 *(target_Q_list[2]+target_Q_list[3]+target_Q_list[4])/3
+				target_Q = 0.95 * torch.min(target_Q_list[0],target_Q_list[1]) + 0.05 *(target_Q_list[2]+target_Q_list[3])/2
 			elif algorithm == 'QMD3':
 				target_Q_list, indices = torch.sort(target_Q_list,dim=0)
 				target_Q = target_Q_list[self.critic_number // 2]
